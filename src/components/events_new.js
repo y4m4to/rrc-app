@@ -10,12 +10,13 @@ class EventsNew extends Component {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
   renderField(field) {
     const { input, label, type, meta: { touched, error } } = field;
 
     return (
       <div>
-        <input type={type} {...input} placeholder={label}/>
+        <input type={type} {...input} placeholder={label} />
         { touched && error && <span>{ error }</span> }
       </div>
     );
@@ -27,17 +28,17 @@ class EventsNew extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, pristine, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <div>
-          <Field label="Title" name="title" type="text" component={ this.renderField }/>
+          <Field label="Title" name="title" type="text" component={ this.renderField } />
         </div>
         <div>
-          <Field label="Body" name="body" type="text" component={ this.renderField }/>
+          <Field label="Body" name="body" type="text" component={ this.renderField } />
         </div>
         <div>
-          <input type="submit" value="Submit" disabled={false}/>
+          <input type="submit" value="Submit" disabled={pristine || submitting} />
           <Link to="/">Cancel</Link>
         </div>
       </form>
