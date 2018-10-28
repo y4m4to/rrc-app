@@ -21,7 +21,7 @@ class EventsIndex extends Component {
         </td>
         <td>{event.body}</td>
       </tr>
-    ));
+    ))
   }
 
   render() {
